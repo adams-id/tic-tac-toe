@@ -1,0 +1,110 @@
+[
+    {
+        "size": "3x3",
+        "name": "3 by 3",
+        "defaultWinLength": 3,
+        "maxWinLength": 3
+    },
+    {
+        "size": "4x4",
+        "name": "4 by 4",
+        "defaultWinLength": 4,
+        "maxWinLength": 4
+    },
+    {
+        "size": "5x5",
+        "name":"5 by 5",
+        "defaultWinLength": 5,
+        "maxWinLength": 5
+    },
+    {
+        "size": "6x6",
+        "name":"6 by 6",
+        "defaultWinLength": 5,
+        "maxWinLength": 6
+    },
+    {
+        "size": "7x7",
+        "name":"7 by 7",
+        "defaultWinLength": 5,
+        "maxWinLength": 7
+    },
+    {
+        "size": "8x8",
+        "name":"8 by 8",
+        "defaultWinLength": 5,
+        "maxWinLength": 8
+    },
+    {
+        "size": "9x9",
+        "name":"9 by 9",
+        "defaultWinLength": 5,
+        "maxWinLength": 9
+    },
+    {
+        "size": "10x10",
+        "name":"10 by 10",
+        "defaultWinLength": 5,
+        "maxWinLength": 10
+    },
+    {
+        "size": "11x11",
+        "name":"11 by 11",
+        "defaultWinLength": 5,
+        "maxWinLength": 11
+    },
+    {
+        "size": "12x12",
+        "name":"12 by 12",
+        "defaultWinLength": 5,
+        "maxWinLength": 12
+    },
+    {
+        "size": "13x13",
+        "name":"13 by 13",
+        "defaultWinLength": 5,
+        "maxWinLength": 13
+    },
+    {
+        "size": "14x14",
+        "name":"14 by 14",
+        "defaultWinLength": 5,
+        "maxWinLength": 14
+    },
+    {
+        "size": "15x15",
+        "name":"15 by 15",
+        "defaultWinLength": 5,
+        "maxWinLength": 15
+    },
+    {
+        "size": "16x16",
+        "name":"16 by 16",
+        "defaultWinLength": 5,
+        "maxWinLength": 16
+    },
+    {
+        "size": "17x17",
+        "name":"17 by 17",
+        "defaultWinLength": 5,
+        "maxWinLength": 17
+    },
+    {
+        "size": "18x18",
+        "name":"18 by 18",
+        "defaultWinLength": 5,
+        "maxWinLength": 18
+    },
+    {
+        "size": "19x19",
+        "name":"19 by 19",
+        "defaultWinLength": 5,
+        "maxWinLength": 19
+    },
+    {
+        "size": "20x20",
+        "name":"20 by 20",
+        "defaultWinLength": 5,
+        "maxWinLength": 20
+    }
+]
