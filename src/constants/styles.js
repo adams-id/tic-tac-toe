@@ -3,6 +3,11 @@ export const primaryColor = '#388CBC';
 export const secondaryColor = '#F2FAFF';
 export const backgroundColor = '#FFFFFF';
 export const textColor = '#000000';
+export const xPlayerBgColor = '#F6FFFA';
+export const xPlayerColor = '#6FCF97';
+export const oPlayerBgColor = '#FEEFEF';
+export const oPlayerColor = '#F36C6C';
+export const dangerColor = '#EB5757';
 
 // Fonts
 export const h1Font = 'normal 700 28px/28px "Exo 2"';

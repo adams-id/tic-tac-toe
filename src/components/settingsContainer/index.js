@@ -19,15 +19,14 @@ SettingsContainerComponent.FormItems = ({children, ...restProps}) => {
     return <FormItems>{children}</FormItems>
 }
 
-SettingsContainerComponent.TextInputItem = ({id, placeholder, value, label, ...restProps}) => {
+SettingsContainerComponent.InputItem = ({id, value, label, type='text', ...restProps}) => {
     return (
         <InputGroup>
             <Label htmlFor={id}>{label}</Label>
             <Input
                 id={id}
                 name={id}
-                type='text'
-                placeholder={placeholder}
+                type={type}
                 defaultValue={value}
                 {...restProps}
             />
