@@ -9,9 +9,9 @@ export const Button = styled.button`
 
     width: ${({ buttonWidth }) => buttonWidth ? buttonWidth : '100%' };
     padding: 10px;
-    background: ${s.primaryColor};
+    background: ${({buttonBgColor}) => buttonBgColor ? buttonBgColor: s.primaryColor};
     border-radius: 5px;
-    color: ${s.backgroundColor};
+    color: ${({buttonTextColor}) => buttonTextColor ? buttonTextColor: s.backgroundColor};
     border: none;
 
     font: ${s.buttonText};

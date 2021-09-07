@@ -31,7 +31,7 @@ export const FormItems = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 20px;
-    height: 70%;
+    height: 80%;
     width: 100%;
 `;
 
@@ -51,6 +51,7 @@ export const Input = styled.input`
     width: 100%;
     border: none;
     padding: 6px;
+    min-height: 24px;
 
     :focus {
         outline: none;
