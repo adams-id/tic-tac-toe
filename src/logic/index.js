@@ -1,6 +1,6 @@
 /**
  * Generates a 2D array of the cell objects
- * @param {*} integerBoardSize the number length of the square board
+ * @param {Number} integerBoardSize the number length of the square board
  * @returns 2D array of cellObjects
  */
 export const generateBoard2DArray = integerBoardSize => {

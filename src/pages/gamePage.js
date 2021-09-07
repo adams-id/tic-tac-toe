@@ -4,6 +4,10 @@ import { useLocation, useHistory, Redirect } from 'react-router-dom';
 import { generateBoard2DArray } from '../logic';
 import * as ROUTES  from '../constants/routes';
 import * as sc from '../constants/styles';
+import {
+    checkWin,
+    getCellArrays
+} from '../logic/game';
 
 const GamePage = () => {
 
@@ -26,11 +30,11 @@ const GamePage = () => {
         return <Redirect to={ROUTES.HOME} />
     }
 
-    let initial2DBoardArray = generateBoard2DArray(state.integerBoardSize);
+    let boardSize = state.integerBoardSize;
 
     const startPlaying = () => {
         setGameStarted(true);
-        setBoardArray(initial2DBoardArray);
+        setBoardArray(generateBoard2DArray(boardSize));
         setPlayerData({
             X: {name: state.gameData.playerOneName, value: 'X'},
             O: {name: state.gameData.playerTwoName, value: 'O'}
@@ -42,19 +46,35 @@ const GamePage = () => {
     }
 
     const exitGame = () => {
-        push(ROUTES.HOME);
+        push(ROUTES.RESULT);
     }
 
     const handleCellClick = e => {
-        let row = parseInt(e.target.dataset.row) - 1;
-        let column = parseInt(e.target.dataset.column) - 1;
+        let row = parseInt(e.target.dataset.row);
+        let column = parseInt(e.target.dataset.column);
         let innerText = e.target.innerText;
+        // let win = false;
         
-        if (innerText === '') {
-            const newArray = [...boardArray];
-            newArray[row][column]['value'] = currentPlayer.value;
-            setBoardArray(newArray);
+        if (!innerText === '') {
+            return;
         }
+
+        const newArray = [...boardArray];
+        newArray[row - 1][column - 1]['value'] = currentPlayer.value;
+        setBoardArray(newArray);
+
+        // Get position arrays
+        let cellArrays = getCellArrays(boardSize, row, column);
+
+        for (const array in cellArrays) {
+            let result = checkWin(cellArrays[array], newArray, state.gameData.winLength, currentPlayer.value);
+            if (result.win) {
+                alert("Game over")
+            }
+        }
+
+
+        // Switch players
         if (currentPlayer.value === 'X') {
             setCurrentPlayer(playerData.O);
         } else {
@@ -74,7 +94,7 @@ const GamePage = () => {
                     backgroundColor={gameStarted ? sc.dangerColor : undefined}
                 />
             </GameMenu>
-            <GameBoard integerBoardSize={state.integerBoardSize}>
+            <GameBoard integerBoardSize={boardSize}>
                 {boardArray.map(rowItem => 
                     rowItem.map(item => 
                         <GameBoard.Cell
