@@ -25,6 +25,9 @@ export const Cell = styled.div`
     background: ${s.backgroundColor};
     color: ${({playerColor}) => playerColor ? playerColor : s.primaryColor};
 
+    font-weight: ${({winCell}) => winCell ? '600' : 'inherit'};
+
+
     :hover {
         background: ${({playerBgColor}) => playerBgColor ? playerBgColor : s.secondaryColor};
     }
