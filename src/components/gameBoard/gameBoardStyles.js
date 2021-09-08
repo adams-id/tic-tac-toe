@@ -22,7 +22,7 @@ export const Cell = styled.div`
     display: grid;
     justify-content: center;
     align-items: center;
-    background: ${s.backgroundColor};
+    background: ${({winCell, playerBgColor}) => winCell ? playerBgColor : s.backgroundColor};
     color: ${({playerColor}) => playerColor ? playerColor : s.primaryColor};
 
     font-weight: ${({winCell}) => winCell ? '600' : 'inherit'};

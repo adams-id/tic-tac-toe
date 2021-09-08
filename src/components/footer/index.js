@@ -1,6 +1,11 @@
 import React from 'react';
 import { Frame, Text, Icon } from './footerStyles';
 
+/**
+ * Reusable footer component
+ * @param {*} props 
+ * @returns 
+ */
 export const FooterComponent = ({...restProps}) => {
     return(
         <Frame {...restProps}>
