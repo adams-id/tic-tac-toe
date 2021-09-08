@@ -10,22 +10,22 @@ const GameBoardComponent = ({children, integerBoardSize=3, ...restProps}) => {
     )
 }
 
-GameBoardComponent.Cell = ({children, player='', ...restProps}) => {
+GameBoardComponent.Cell = ({children, player='', winCell=false, ...restProps}) => {
 
     let bgColor;
     let color;
-    let value;
+
 
     switch (player.toLowerCase()) {
         case 'x':
             bgColor = sc.xPlayerBgColor;
             color = sc.xPlayerColor;
-            value = 'x';
+
             break;
         case 'o':
             bgColor = sc.oPlayerBgColor;
             color = sc.oPlayerColor;
-            value = 'o';
+
             break;
         default:
             break;
@@ -34,6 +34,9 @@ GameBoardComponent.Cell = ({children, player='', ...restProps}) => {
         <Cell
             playerBgColor={bgColor}
             playerColor={color}
+
+            winCell={winCell}
+
             {...restProps}
         >
             {children}

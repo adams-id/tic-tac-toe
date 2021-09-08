@@ -1,7 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import * as ROUTES from './constants/routes';
-import { GamePage, HomePage } from './pages';
+
+import { GamePage, HomePage, ResultPage } from './pages';
+
 
 const App = () => {
   return (
@@ -12,6 +14,11 @@ const App = () => {
           <Route exact path={ROUTES.GAME}>
               <GamePage />
           </Route>
+
+          <Route exact path={ROUTES.RESULT}>
+              <ResultPage />
+          </Route>
+
       </Router>
   );
 }
