@@ -14,7 +14,8 @@ export const generateBoard2DArray = integerBoardSize => {
                 cellId: `row${i}-col${j}`,
                 row: i,
                 column: j,
-                value: ''
+                value: '',
+                winCell: false
             }
             rowList.push(cellObject);
         }

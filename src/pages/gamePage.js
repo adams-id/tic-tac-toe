@@ -6,7 +6,8 @@ import * as ROUTES  from '../constants/routes';
 import * as sc from '../constants/styles';
 import {
     checkWin,
-    getCellArrays
+    getCellArrays,
+    shouldStopGame
 } from '../logic/game';
 
 const GamePage = () => {
@@ -22,6 +23,11 @@ const GamePage = () => {
         X: {name: '', value: 'X'},
         O: {name: '', value: 'O'}
     })
+    const [ gameOver, setGameOver ] = useState({
+        isGameOver: false,
+        win: false,
+        winnerName: ''
+    });
     const { push } = useHistory();
 
     /* If this page is not redirected from the start button in the home page,
@@ -46,33 +52,59 @@ const GamePage = () => {
     }
 
     const exitGame = () => {
-        push(ROUTES.RESULT);
+        push(ROUTES.HOME);
+    }
+
+    const goToResults = () => {
+        push({
+            pathname: ROUTES.RESULT,
+            state: {
+                gameData: state.gameData,
+                integerBoardSize: state.integerBoardSize,
+                fromGamePage: true,
+                win: gameOver.win,
+                winnerName: gameOver.winnerName
+            }
+        })
+    }
+
+    const handleGameOver = (win=false) => {
+        setGameOver({
+            isGameOver: true,
+            win: win,
+            winnerName: win ? currentPlayer.name : ''
+        })
     }
 
     const handleCellClick = e => {
         let row = parseInt(e.target.dataset.row);
         let column = parseInt(e.target.dataset.column);
-        let innerText = e.target.innerText;
-        // let win = false;
-        
-        if (!innerText === '') {
-            return;
-        }
 
         const newArray = [...boardArray];
         newArray[row - 1][column - 1]['value'] = currentPlayer.value;
-        setBoardArray(newArray);
 
         // Get position arrays
         let cellArrays = getCellArrays(boardSize, row, column);
 
+        // Check for a winner
         for (const array in cellArrays) {
             let result = checkWin(cellArrays[array], newArray, state.gameData.winLength, currentPlayer.value);
             if (result.win) {
-                alert("Game over")
+                const newBoardArray = [...newArray];
+                result.winCells.forEach(c => {
+                    newBoardArray[c.row - 1][c.col - 1].winCell = true;
+                })
+                setBoardArray(newBoardArray);
+                handleGameOver(true);
+                return;
             }
         }
 
+        // Check if it's a tie
+        if (shouldStopGame(newArray)) {
+            handleGameOver();
+            return;
+        }
 
         // Switch players
         if (currentPlayer.value === 'X') {
@@ -80,6 +112,9 @@ const GamePage = () => {
         } else {
             setCurrentPlayer(playerData.X);
         }
+
+        // Update Game board state
+        setBoardArray(newArray);
     }
 
     return (
@@ -88,11 +123,14 @@ const GamePage = () => {
         
         <BodyContainer>
             <GameMenu currentPlayerName={currentPlayer.name}>
-                <Button
-                    buttonText={gameStarted ? 'exit game' : 'start playing'}
-                    onClick={gameStarted ? exitGame : startPlaying}
-                    backgroundColor={gameStarted ? sc.dangerColor : undefined}
-                />
+                {gameOver.isGameOver
+                    ? <Button buttonText='Go to Results' onClick={goToResults} /> 
+                    : <Button
+                        buttonText={gameStarted ? 'exit game' : 'start playing'}
+                        onClick={gameStarted ? exitGame : startPlaying}
+                        backgroundColor={gameStarted ? sc.dangerColor : undefined}
+                    />
+                }
             </GameMenu>
             <GameBoard integerBoardSize={boardSize}>
                 {boardArray.map(rowItem => 
@@ -102,7 +140,8 @@ const GamePage = () => {
                             data-row={item.row}
                             data-column={item.column}
                             player={item.value}
-                            onClick={gameStarted ? handleCellClick: undefined}
+                            winCell={item.winCell}
+                            onClick={gameStarted && item.value === '' && !gameOver.isGameOver ? handleCellClick: undefined}
                         >
                             {item.value}
                         </GameBoard.Cell>

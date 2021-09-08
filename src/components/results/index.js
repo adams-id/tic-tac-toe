@@ -1,10 +1,10 @@
 import React from 'react';
 import { Container, Winner } from './resultStyle';
 
-export const ResultComponent = ({children, ...restProps}) => {
+export const ResultComponent = ({children, resultText, ...restProps}) => {
     return (
         <Container {...restProps}>
-            <Winner>  Thor Winns  </Winner>
+            <Winner>  {resultText} </Winner>
             {children}
         </Container>
     )

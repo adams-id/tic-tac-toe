@@ -3,7 +3,7 @@
  * cell can be part of a winning move.
  * @param {Number} boardSize the size of the current game board
  * @param {Number} rowPosition the row position of the cell
- * @param {NUmber} colPosition the column position of the cell
+ * @param {Number} colPosition the column position of the cell
  * @returns an object of the arrays
  */
 export const getCellArrays = (boardSize, rowPosition, colPosition) => {
@@ -46,7 +46,7 @@ export const getCellArrays = (boardSize, rowPosition, colPosition) => {
  * A winning combination would a case where the same winString appears
  * consecutively for a number of times. The winLength defines these number of times.
  * @param {{row, col}[]} cellArray the array to check for a win
- * @param {{cellId, row, column, value}[][]} board2DArray the 2D board array to check through for a win
+ * @param {{cellId, row, column, value, winCell}[][]} board2DArray the 2D board array to check through for a win
  * @param {Number} winLength the number of consecutive repititions required for a win
  * @param {String} winString the winning string to check for
  * @returns an object containing a boolean `win` that indicates whether there was a winning combination
@@ -85,6 +85,24 @@ export const checkWin = (cellArray, board2DArray, winLength, winString) => {
         win: false,
         winCells: []
     }
+}
+
+/**
+ * Checks if there are still empty spaces in the game
+ * @param {{cellId, row, column, value, winCell}[][]} board2DArray the game 2D board array
+ * @returns true if there are no empty spaces, false if otherwise
+ */
+export const shouldStopGame = (board2DArray) => {
+    let stopGame = false;
+
+    // check if there is any cell with an empty string as a value
+    let emptyCell = board2DArray.find(row => (
+        row.find(cell => (cell.value === ''))
+    ))
+
+    if (!emptyCell) stopGame = true;
+
+    return stopGame;
 }
 
 /**

@@ -10,7 +10,7 @@ const GameBoardComponent = ({children, integerBoardSize=3, ...restProps}) => {
     )
 }
 
-GameBoardComponent.Cell = ({children, player='', ...restProps}) => {
+GameBoardComponent.Cell = ({children, player='', winCell=false, ...restProps}) => {
 
     let bgColor;
     let color;
@@ -31,6 +31,7 @@ GameBoardComponent.Cell = ({children, player='', ...restProps}) => {
         <Cell
             playerBgColor={bgColor}
             playerColor={color}
+            winCell={winCell}
             {...restProps}
         >
             {children}
