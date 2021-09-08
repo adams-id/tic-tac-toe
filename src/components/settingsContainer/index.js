@@ -4,6 +4,11 @@ import {
     Select, SelectOption, Label
 } from './settingsStyles';
 
+/**
+ * JSX component for wrapping the entirety of the pre game settings form
+ * @param {*} props
+ * @returns 
+ */
 const SettingsContainerComponent = ({children, submitHandler, ...restProps}) => {
 
     return (

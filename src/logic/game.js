@@ -109,7 +109,7 @@ export const shouldStopGame = (board2DArray) => {
  * Get the first diagonal array of the items involving the cell
  * @param {Number} boardSize the size of the current game board
  * @param {Number} rowPosition the row position of the cell
- * @param {NUmber} colPosition the column position of the cell
+ * @param {Number} colPosition the column position of the cell
  * @returns an array of the first diagonal containing the cell
  */
 const getForwardDiagonal = (boardSize, rowPosition, colPosition) => {
@@ -145,7 +145,7 @@ const getForwardDiagonal = (boardSize, rowPosition, colPosition) => {
  * Get the second diagonal array of the items involving the cell
  * @param {Number} boardSize the size of the current game board
  * @param {Number} rowPosition the row position of the cell
- * @param {NUmber} colPosition the column position of the cell
+ * @param {Number} colPosition the column position of the cell
  * @returns an array of the second diagonal containing the cell
  */
 const getBackwardDiagonal = (boardSize, rowPosition, colPosition) => {
@@ -174,4 +174,3 @@ const getBackwardDiagonal = (boardSize, rowPosition, colPosition) => {
 
     return diagonalArray;
 }
-
