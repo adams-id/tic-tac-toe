@@ -15,14 +15,17 @@ GameBoardComponent.Cell = ({children, player='', winCell=false, ...restProps}) =
     let bgColor;
     let color;
 
+
     switch (player.toLowerCase()) {
         case 'x':
             bgColor = sc.xPlayerBgColor;
             color = sc.xPlayerColor;
+
             break;
         case 'o':
             bgColor = sc.oPlayerBgColor;
             color = sc.oPlayerColor;
+
             break;
         default:
             break;
@@ -31,7 +34,9 @@ GameBoardComponent.Cell = ({children, player='', winCell=false, ...restProps}) =
         <Cell
             playerBgColor={bgColor}
             playerColor={color}
+
             winCell={winCell}
+
             {...restProps}
         >
             {children}

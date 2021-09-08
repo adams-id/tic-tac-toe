@@ -10,6 +10,7 @@ import {
     shouldStopGame
 } from '../logic/game';
 
+
 const GamePage = () => {
 
     const { state } = useLocation();
@@ -23,11 +24,13 @@ const GamePage = () => {
         X: {name: '', value: 'X'},
         O: {name: '', value: 'O'}
     })
+
     const [ gameOver, setGameOver ] = useState({
         isGameOver: false,
         win: false,
         winnerName: ''
     });
+
     const { push } = useHistory();
 
     /* If this page is not redirected from the start button in the home page,
@@ -41,6 +44,7 @@ const GamePage = () => {
     const startPlaying = () => {
         setGameStarted(true);
         setBoardArray(generateBoard2DArray(boardSize));
+
         setPlayerData({
             X: {name: state.gameData.playerOneName, value: 'X'},
             O: {name: state.gameData.playerTwoName, value: 'O'}
@@ -107,14 +111,15 @@ const GamePage = () => {
         }
 
         // Switch players
+
         if (currentPlayer.value === 'X') {
             setCurrentPlayer(playerData.O);
         } else {
             setCurrentPlayer(playerData.X);
         }
-
         // Update Game board state
         setBoardArray(newArray);
+
     }
 
     return (
@@ -123,6 +128,7 @@ const GamePage = () => {
         
         <BodyContainer>
             <GameMenu currentPlayerName={currentPlayer.name}>
+
                 {gameOver.isGameOver
                     ? <Button buttonText='Go to Results' onClick={goToResults} /> 
                     : <Button
@@ -140,8 +146,10 @@ const GamePage = () => {
                             data-row={item.row}
                             data-column={item.column}
                             player={item.value}
+
                             winCell={item.winCell}
                             onClick={gameStarted && item.value === '' && !gameOver.isGameOver ? handleCellClick: undefined}
+
                         >
                             {item.value}
                         </GameBoard.Cell>

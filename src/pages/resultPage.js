@@ -36,6 +36,7 @@ const ResultPage = () => {
             <Button type='submit' buttonText='Go back to Main Menu' onClick={resetGame}/>
         </ResultMenu>
             
+
         <Footer />
         </>
     );
